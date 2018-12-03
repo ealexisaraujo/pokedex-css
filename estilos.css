@@ -26,7 +26,7 @@ body {
   z-index: 2;
   transform-origin: left center;
   transform: rotateY(-180deg);
-  transition: .6s;
+  transition: .5s;
 }
 
 .pokedex-back {
