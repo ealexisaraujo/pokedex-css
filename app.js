@@ -1,10 +1,10 @@
-import data from './data.js';
 import makeChart from './make-chart.js'
 
 const $pokedex = document.querySelector('#pokedex')
 const $image = document.querySelector('#image')
 const $form = document.querySelector('#form')
 const speech = window.speechSynthesis
+const $screen = document.querySelector('#screen')
 
 async function getPokemon(entrypoint,id) {
   const response = await fetch(`https://pokeapi.co/api/v2/${entrypoint}/${id}/`)
@@ -20,6 +20,7 @@ const labels = [
 $form.addEventListener('submit', async (event) => {
   event.preventDefault()
   $pokedex.classList.add('is-active')
+  $screen.style.backgroundImage = 'url(./images/loading.gif)'
   const form = new FormData($form)
   const id = form.get('id')
   const pokemon = await getPokemon('pokemon',id)
@@ -30,8 +31,11 @@ $form.addEventListener('submit', async (event) => {
   const stats = pokemon.stats.map((stat)=> stat.base_stat)
   console.log(stats);
 
-  $image.setAttribute('src', pokemon.sprites.front_default)
-  const utterance = new SpeechSynthesisUtterance(flavor.flavor_text)
+  
+  const utterance = new SpeechSynthesisUtterance(`${pokemon.name}. ${flavor.flavor_text}`)
+  utterance.rate = 1.3
   speech.speak(utterance)
   makeChart(stats, pokemon.name, labels)
+  $image.setAttribute('src', pokemon.sprites.front_default)
+  $screen.style.backgroundImage = '';
 })

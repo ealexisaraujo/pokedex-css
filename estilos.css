@@ -147,3 +147,23 @@ body {
   padding: 10px;
 }
 
+.pokedex-left-center {
+  background: #b0b0b0;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid black;
+  margin: 20px 0;
+  padding: 1em;
+}
+
+.pokedex-screen {
+  background: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
