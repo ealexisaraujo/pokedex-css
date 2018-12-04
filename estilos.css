@@ -47,6 +47,8 @@ body {
   backface-visibility: hidden;
   border: 1px solid black;
   box-sizing: border-box;
+  display: flex;
+  padding: 20px;
 }
 
 .pokedex-right-front {
@@ -136,3 +138,12 @@ body {
   border-bottom: none;
   box-sizing: border-box;
 }
+
+.chart {
+  background-color: white;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: 3px solid black;
+  padding: 10px;
+}
+
